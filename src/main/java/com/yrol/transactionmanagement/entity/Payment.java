@@ -1,4 +1,4 @@
-package entity;
+package com.yrol.transactionmanagement.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
