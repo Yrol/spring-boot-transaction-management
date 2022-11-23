@@ -9,9 +9,14 @@ import com.yrol.transactionmanagement.repository.OrderRepository;
 import com.yrol.transactionmanagement.repository.PaymentRepository;
 import com.yrol.transactionmanagement.service.OrderService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
+/**
+ * Basic implementation of Order and payment service.
+ * If the payment type is not DEBIT, then the DB transaction will be reverted using @Transactional annotation.
+ * */
 @Service
 public class OrderServiceImpl implements OrderService {
 
@@ -24,6 +29,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+//    @Transactional(rollbackFor = PaymentException.class) // rollback if PaymentException occur
+    @Transactional // The default transaction management to prevent / rollback payments being saved if card type is not Debit
     public OrderResponse placeOrder(OrderRequest orderRequest) {
 
         Order order = orderRequest.getOrder();
