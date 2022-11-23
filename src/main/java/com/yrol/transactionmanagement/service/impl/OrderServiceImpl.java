@@ -8,9 +8,11 @@ import com.yrol.transactionmanagement.exception.PaymentException;
 import com.yrol.transactionmanagement.repository.OrderRepository;
 import com.yrol.transactionmanagement.repository.PaymentRepository;
 import com.yrol.transactionmanagement.service.OrderService;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+@Service
 public class OrderServiceImpl implements OrderService {
 
     private OrderRepository orderRepository;
